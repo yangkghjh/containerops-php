@@ -1,0 +1,11 @@
+version: "2"
+services:
+  test-env:
+    image: 'containerops/composer:latest'
+    build: ./
+    container_name: test-env
+    tty: true
+    environment:
+      - "TZ=Asia/Shanghai"
+    volumes:
+      - ../../../:/root/src
