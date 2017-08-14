@@ -1,9 +1,9 @@
 #!/bin/bash
 
-function phar()
+function Composer()
 {
     export CO_DATA="git-url=https://github.com/SegmentFault/phar-sample.git entry-file=build.php"
-    go run component/phar.go
+    ./bin/containerops-php Composer
 }
 
 function phpunit()
