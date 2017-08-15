@@ -2,14 +2,14 @@
 
 function Composer()
 {
-    export CO_DATA="git-url=https://github.com/SegmentFault/phar-sample.git entry-file=build.php"
+    export CO_DATA="git-url=https://github.com/sebastianbergmann/phploc.git entry-file=build.php"
     ./bin/containerops-php Composer
 }
 
-function phpunit()
+function Phpcpd()
 {
-    export CO_DATA="git-url=https://github.com/sebastianbergmann/phploc.git --configuration=phpunit.xml composer=true"
-    go run component/phpunit.go
+    export CO_DATA="git-url=https://github.com/TIGERB/easy-php.git"
+    ./bin/containerops-php Phpcpd
 }
 
 echo "Testing $1"

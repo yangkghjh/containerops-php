@@ -1,13 +1,29 @@
 #!/bin/bash
 
-echo "Start building...\n"
+source tools/config.sh
+
+function composer()
+{
+    docker build -t ${PREFIX}/component-composer:${VERSION} -f docker/Dependence/component-composer/Dockerfile .
+}
+
+function phpcpd()
+{
+    docker build -t ${PREFIX}/phpcpd:${VERSION} -f docker/Analysis/phpcpd/Dockerfile .
+}
+
+echo "Start building..."
 
 case $1 in
-"phar")
-    docker build -t containerops/phar:latest -f Compile/phar/Dockerfile .
+"composer")
+    composer
     ;;
-"phpunit")
-    docker build -t containerops/phpunit:latest -f Unittest/phpunit/Dockerfile .
+"phpcpd")
+    phpcpd
+    ;;
+"all")
+    composer
+    phpcpd
     ;;
 *)
     echo "No such component: $1.\n"

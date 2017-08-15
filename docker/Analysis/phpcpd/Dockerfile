@@ -15,19 +15,18 @@
 FROM containerops/composer:latest
 MAINTAINER Yang Bin <yangkghjh@gmail.com>
 
-RUN useradd --create-home --no-log-init --shell /bin/bash composer
-RUN adduser composer sudoRUN echo 'composer:composer' | chpasswd
-USER composer
-
-RUN composer global require "sebastian/phpcpd" \
-    && export PATH=~/.composer/vendor/bin:$PATH;
+# RUN useradd --create-home --no-log-init --shell /bin/bash composer
+# RUN adduser composer sudoRUN echo 'composer:composer' | chpasswd
+# USER composer
 
 USER root
 
-RUN mkdir -p $GOPATH/src
-ADD /src/ $GOPATH/src
+RUN composer global require "sebastian/phpcpd";
+ENV PATH ~/.composer/vendor/bin:$PATH
 
-WORKDIR $GOPATH/src
-RUN go build component/phpcpd.go
+RUN mkdir -p /root/src
+ADD / /root/src
 
-CMD ./phpcpd
+WORKDIR /root/src
+
+CMD ./bin/containerops-php Phpcpd

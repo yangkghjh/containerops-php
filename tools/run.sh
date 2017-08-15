@@ -1,8 +1,15 @@
 #!/bin/bash
 
-function phar()
+source tools/config.sh
+
+function composer()
 {
-    docker run --env CO_DATA="git-url=https://github.com/SegmentFault/phar-sample.git entry-file=build.php" containerops/phar:latest
+    docker run --env CO_DATA="git-url=https://github.com/sebastianbergmann/phploc.git entry-file=build.php" ${PREFIX}/component-composer:${VERSION}
+}
+
+function phpcpd()
+{
+    docker run --env CO_DATA="git-url=https://github.com/TIGERB/easy-php.git" ${PREFIX}/phpcpd:${VERSION}
 }
 
 function phpunit()

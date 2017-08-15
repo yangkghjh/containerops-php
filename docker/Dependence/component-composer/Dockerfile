@@ -15,14 +15,9 @@
 FROM containerops/composer:latest
 MAINTAINER Yang Bin <yangkghjh@gmail.com>
 
-RUN useradd --create-home --no-log-init --shell /bin/bash composer
-RUN adduser composer sudoRUN echo 'composer:composer' | chpasswd
-USER composer
+RUN mkdir -p /root/src
+ADD / /root/src
 
-RUN mkdir -p $GOPATH/src
-ADD /src/ $GOPATH/src
+WORKDIR /root/src
 
-WORKDIR $GOPATH/src
-RUN go build component/component-composer.go
-
-CMD ./component-composer
+CMD ./bin/containerops-php Composer

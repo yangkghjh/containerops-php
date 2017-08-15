@@ -1,7 +1,18 @@
 <?php
 class Composer {
     public static function exec($input) {
-        Git::clone($input[GIT_REPO]);
+        try {
+            Git::clone($input[GIT_REPO]);
+        } catch (Exception $ex) {
+            stderrln("Git clone error: " . $ex->getMessage());
+        }
+
+        try {
+            exec("cd " . WORK_DIR . " && composer install");
+            stdoutln("[COUT] CO_RESULT = true");
+        } catch (Exception $ex) {
+            stderrln("Git clone error.");
+        }
     } 
 }
 ?>
