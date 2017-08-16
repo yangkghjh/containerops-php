@@ -12,4 +12,10 @@ function stdoutReport ($name, $type) {
     fwrite(STDOUT, "[COUT] $type = \n");
     fwrite(STDOUT, fread($report, filesize($name)));
 }
+
+function stdoutArray ($strings) {
+    foreach ($strings as $string) {
+        stdoutln($string);
+    }
+}
 ?>

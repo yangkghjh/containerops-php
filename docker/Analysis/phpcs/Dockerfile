@@ -15,19 +15,13 @@
 FROM containerops/composer:latest
 MAINTAINER Yang Bin <yangkghjh@gmail.com>
 
-RUN useradd --create-home --no-log-init --shell /bin/bash composer
-RUN adduser composer sudoRUN echo 'composer:composer' | chpasswd
-USER composer
-
-RUN composer global require "squizlabs/php_codesniffer" \
-    && export PATH=~/.composer/vendor/bin:$PATH;
-
 USER root
 
-RUN mkdir -p $GOPATH/src
-ADD /src/ $GOPATH/src
+RUN composer global require "squizlabs/php_codesniffer"
 
-WORKDIR $GOPATH/src
-RUN go build component/phpcs.go
+RUN mkdir -p /root/src
+ADD / /root/src
 
-CMD ./phpcs
+WORKDIR /root/src
+
+CMD ./bin/containerops-php Phpcs

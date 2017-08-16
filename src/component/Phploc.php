@@ -1,8 +1,8 @@
 <?php
-class Phpcpd {
-    const reportPath = "/tmp/PMD-CPD.xml";
+class Phploc {
+    const reportPath = "/tmp/report.xml";
     const reportFormat = "XML_REPORT";
-
+    
     public static function exec($input) {
         try {
             Git::clone($input[GIT_REPO]);
@@ -12,18 +12,18 @@ class Phpcpd {
         }
 
         try {
-            if ($input["path"] == "") {
+            $cmd = "/root/.composer/vendor/bin/phploc ";
+
+            if ($input["path"] == "" || $input["path"] == null) {
                 $input["path"] = ".";
             }
-            $cmd = "/root/.composer/vendor/bin/phpcpd " . $input['path'];
+
+            $cmd = "$cmd " . $input["file"];
 
             $params = [
-                "names",
-                "names-exclude",
-                "regexps-exclude",
                 "exclude",
-                "min-lines",
-                "min-tokens"
+                "names",
+                "names-exclude"
             ];
 
             foreach ($params as $value) {
@@ -32,7 +32,17 @@ class Phpcpd {
                 }
             }
 
-            $cmd = "$cmd --log-pmd=" . self::reportPath;
+            $params_bool = [
+                "count_tests",
+            ];
+
+            foreach ($params as $value) {
+                if ($input[$value] == "true") {
+                    $cmd = "$cmd --$value";
+                }
+            }
+
+            $cmd = "$cmd --log-xml=" . self::reportPath;
 
             exec("cd " . WORK_DIR . " && $cmd");
 
@@ -41,6 +51,6 @@ class Phpcpd {
         } catch (Exception $ex) {
             stderrln("[COUT] CO_RESULT = false");
         }
-    } 
+    }
 }
 ?>

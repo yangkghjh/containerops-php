@@ -15,19 +15,13 @@
 FROM containerops/composer:latest
 MAINTAINER Yang Bin <yangkghjh@gmail.com>
 
-RUN useradd --create-home --no-log-init --shell /bin/bash composer
-RUN adduser composer sudoRUN echo 'composer:composer' | chpasswd
-USER composer
-
-RUN composer global require "phpunit/phpunit" \
-    && export PATH=~/.composer/vendor/bin:$PATH;
-
 USER root
 
-RUN mkdir -p $GOPATH/src
-ADD /src/ $GOPATH/src
+RUN composer global require "phpunit/phpunit" 
 
-WORKDIR $GOPATH/src
-RUN go build component/phpunit.go
+RUN mkdir -p /root/src
+ADD / /root/src
 
-CMD ./phpunit
+WORKDIR /root/src
+
+CMD ./bin/containerops-php Phpunit

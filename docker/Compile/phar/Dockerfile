@@ -15,17 +15,12 @@
 FROM containerops/composer:latest
 MAINTAINER Yang Bin <yangkghjh@gmail.com>
 
-RUN useradd --create-home --no-log-init --shell /bin/bash composer
-RUN adduser composer sudoRUN echo 'composer:composer' | chpasswd
-USER composer
-
 USER root
 
-RUN mkdir -p $GOPATH/src
-ADD /src/ $GOPATH/src
-ADD Compile/phar/php.ini /usr/local/etc/php/php.ini
+RUN mkdir -p /root/src
+ADD / /root/src
+ADD docker/Compile/phar/php.ini /usr/local/etc/php/php.ini
 
-WORKDIR $GOPATH/src
-RUN go build component/phar.go
+WORKDIR /root/src
 
-CMD ./phar
+CMD ./bin/containerops-php Phars
