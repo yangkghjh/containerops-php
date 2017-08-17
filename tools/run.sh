@@ -47,6 +47,26 @@ function phpunit()
     docker run --env CO_DATA="git-url=https://github.com/sebastianbergmann/phploc.git --configuration=phpunit.xml composer=true" ${PREFIX}/phpunit:${VERSION}
 }
 
+function cli()
+{
+    docker run --env CO_DATA="git-url=https://github.com/wp-cli/wp-cli.git file=./bin/wp composer=true" ${PREFIX}/cli:${VERSION}
+}
+
+function beast()
+{
+    docker run --env CO_DATA="git-url=https://github.com/TIGERB/easy-php.git" ${PREFIX}/beast:${VERSION}
+}
+
+function apigen()
+{
+    docker run --env CO_DATA="git-url=https://github.com/TIGERB/easy-php.git path=app destination=docs" ${PREFIX}/apigen:${VERSION}
+}
+
+function phpdox()
+{
+    docker run --env CO_DATA="git-url=https://github.com/theseer/phpdox.git" ${PREFIX}/phpdox:${VERSION}
+}
+
 echo "Run $1"
 
 "$1"

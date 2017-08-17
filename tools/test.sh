@@ -48,6 +48,30 @@ function Phpunit()
     ./bin/containerops-php Phpunit
 }
 
+function Cli()
+{
+    export CO_DATA="git-url=https://github.com/wp-cli/wp-cli.git file=./bin/wp composer=true"
+    ./bin/containerops-php Cli
+}
+
+function Beast()
+{
+    export CO_DATA="git-url=https://github.com/TIGERB/easy-php.git"
+    ./bin/containerops-php Beast
+}
+
+function Apigen()
+{
+    export CO_DATA="git-url=https://github.com/TIGERB/easy-php.git path=app destination=docs"
+    ./bin/containerops-php Apigen
+}
+
+function Phpdox()
+{
+    export CO_DATA="git-url=https://github.com/theseer/phpdox.git"
+    ./bin/containerops-php Phpdox
+}
+
 echo "Testing $1"
 
 "$1"

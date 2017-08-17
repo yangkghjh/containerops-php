@@ -42,6 +42,26 @@ function phpunit()
     docker build -t ${PREFIX}/phpunit:${VERSION} -f docker/Unittest/phpunit/Dockerfile .
 }
 
+function cli()
+{
+    docker build -t ${PREFIX}/cli:${VERSION} -f docker/Base/cli/Dockerfile .
+}
+
+function beast()
+{
+    docker build -t ${PREFIX}/beast:${VERSION} -f docker/Compile/beast/Dockerfile .
+}
+
+function apigen()
+{
+    docker build -t ${PREFIX}/apigen:${VERSION} -f docker/Document/apigen/Dockerfile .
+}
+
+function phpdox()
+{
+    docker build -t ${PREFIX}/phpdox:${VERSION} -f docker/Document/phpdox/Dockerfile .
+}
+
 echo "Start building..."
 
 case $1 in
@@ -53,6 +73,9 @@ case $1 in
     phpmd
     phar
     phpunit
+    cli
+    beast
+    apigen
     ;;
 *)
     $1
