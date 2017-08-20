@@ -5,7 +5,7 @@ source tools/config.sh
 function base()
 {
     cd base
-    docker build -t containerops/composer:latest --build-arg php_version=7.1.4 .
+    docker build -t hub.opshub.sh/binary/v1/containerops/component/binary/php:0.1 --build-arg php_version=7.1.4 .
     cd ..
 }
 

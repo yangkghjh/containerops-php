@@ -1,4 +1,4 @@
-FROM containerops/composer:latest
+FROM hub.opshub.sh/binary/v1/containerops/component/binary/php:0.1
 
 ADD phpunit /usr/local/bin/phpunit
 

@@ -1,7 +1,7 @@
 version: "2"
 services:
   test-env:
-    image: 'containerops/composer:latest'
+    image: 'hub.opshub.sh/binary/v1/containerops/component/binary/php:0.1'
     build: ./
     container_name: test-env
     tty: true

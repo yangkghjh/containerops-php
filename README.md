@@ -29,9 +29,9 @@ cd containerops-php
 ./tools/build.sh
 ```
 
-## Parameter
+## Options
 
-| Type | Componets | Parameters |
+| Type | Componets | Options |
 | :--- | :--- | :--- |
 | Analysis | phpcpd | git-url <br> path <br> names <br> names-exclude <br> regexps-exclude <br> exclude <br> min-lines <br> min-tokens |
 | Analysis | phpcs |  |
