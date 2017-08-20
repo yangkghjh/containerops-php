@@ -1,5 +1,7 @@
 # Containerops-php
 
+[![Build Status](https://travis-ci.org/yangkghjh/containerops-php.svg?branch=master)](https://travis-ci.org/yangkghjh/containerops-php)
+
 PHP componets for [containerops](https://github.com/Huawei/containerops).
 
 ## List
@@ -31,7 +33,7 @@ cd containerops-php
 
 | Type | Componets | Parameters |
 | :--- | :--- | :--- |
-| Analysis | phpcpd | - git-url <br> - path <br> - names <br> - names-exclude <br> - regexps-exclude <br> - exclude <br> - min-lines <br> - min-tokens |
+| Analysis | phpcpd | git-url <br> path <br> names <br> names-exclude <br> regexps-exclude <br> exclude <br> min-lines <br> min-tokens |
 | Analysis | phpcs |  |
 | Analysis | phploc |  |
 | Analysis | phpmd |  |
