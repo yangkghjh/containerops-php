@@ -12,7 +12,6 @@ PHP componets for [containerops](https://github.com/Huawei/containerops).
 | Analysis | phpmd |  |
 | Analysis | phpmetrics |  |
 | Base | cli |  |
-| Base | composer |  |
 | Compile | beast |  |
 | Compile | phar |  |
 | Dependence | component-composer |  |
@@ -23,9 +22,36 @@ PHP componets for [containerops](https://github.com/Huawei/containerops).
 ## Usage
 
 ```shell
+git clone https://github.com/yangkghjh/containerops-php.git
+cd containerops-php
+./tools/build.sh
 ```
 
+## Parameter
+
+| Type | Componets | Parameters |
+| :--- | :--- | :--- |
+| Analysis | phpcpd | - git-url <br> - path <br> - names <br> - names-exclude <br> - regexps-exclude <br> - exclude <br> - min-lines <br> - min-tokens |
+| Analysis | phpcs |  |
+| Analysis | phploc |  |
+| Analysis | phpmd |  |
+| Analysis | phpmetrics |  |
+| Base | cli |  |
+| Compile | beast |  |
+| Compile | phar |  |
+| Dependence | component-composer |  |
+| Document | apigen |  |
+| Document | phpdox |  |
+| Unittest | phpunit |  |
+
 ## Develop
+
+### Build Php Base Image
+
+```
+cd base
+docker build -t hub.opshub.sh/binary/v1/containerops/component/binary/php:0.1 --build-arg php_version=7.1.4 .
+```
 
 ### Environment
 
@@ -69,7 +95,3 @@ docker build -t hub.opshub.sh/binary/v1/containerops/component/binary/php/beast:
 docker build -t hub.opshub.sh/binary/v1/containerops/component/binary/php/apigen:0.1 .
 docker build -t hub.opshub.sh/binary/v1/containerops/component/binary/php/phpdox:0.1 .
 ```
-
-### Build Project
-
-### Push

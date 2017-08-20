@@ -2,6 +2,13 @@
 
 source tools/config.sh
 
+function base()
+{
+    cd base
+    docker build -t containerops/composer:latest --build-arg php_version=7.1.4 .
+    cd ..
+}
+
 function composer()
 {
     docker build -t ${PREFIX}/component-composer:${VERSION} -f docker/Dependence/component-composer/Dockerfile .
@@ -66,20 +73,23 @@ echo "Start building..."
 
 case $1 in
 "all")
+    base
     composer
     phpcpd
     phpcs
     phploc
     phpmd
+    phpmetrics
     phar
     phpunit
     cli
     beast
     apigen
+    phpdox
     ;;
 *)
     $1
     ;;
 esac
 
-echo "Build success."
+echo "Build finished."

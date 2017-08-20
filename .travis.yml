@@ -1,0 +1,12 @@
+language: bash
+services: docker
+sudo: required
+
+env:
+  - VERSION=0.1
+
+script:
+  - ./tools/build.sh all
+
+after_script:
+  - docker images
