@@ -29,7 +29,6 @@ class Phpmd {
             $cmd = "$cmd " . $input['path'] . " " . $input['formats'] . " " . $input['ruleset'];
 
             $params = [
-                "minimumpriority",
                 "exclude",
                 "suffixes"
             ];
