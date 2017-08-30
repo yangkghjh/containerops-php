@@ -7,6 +7,7 @@ env:
 
 script:
   - ./tools/build.sh all
+  - ./tools/run.sh all
 
 after_script:
   - docker images

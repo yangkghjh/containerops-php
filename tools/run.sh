@@ -69,6 +69,24 @@ function phpdox()
 
 echo "Run $1"
 
-"$1"
+case $1 in
+"all")
+    composer
+    phpcpd
+    phpcs
+    phploc
+    phpmd
+    phpmetrics
+    phar
+    phpunit
+    cli
+    beast
+    apigen
+    phpdox
+    ;;
+*)
+    $1
+    ;;
+esac
 
 rm -rf ./workspace
