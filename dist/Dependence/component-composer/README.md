@@ -3,7 +3,7 @@
 ## Build
 
 ```shell
-docker build -t hub.opshub.sh/binary/v1/containerops/component/binary/php/component-composer: .
+docker build -t hub.opshub.sh/containerops/dependence-php-composer:latest .
 ```
 
 ## Run

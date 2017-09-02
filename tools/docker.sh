@@ -10,11 +10,18 @@ docker push ${PREFIX}php:$VERSION
 cd ..
 
 list=( \
-    "analysis_php_phpcpd" \
-    "analysis_php_phpcs" \
-    "analysis_php_phploc" \
-    "analysis_php_phpmd" \
-    "analysis_php_phpmetrics" \
+    "analysis-php-phpcpd" \
+    "analysis-php-phpcs" \
+    "analysis-php-phploc" \
+    "analysis-php-phpmd" \
+    "analysis-php-phpmetrics" \
+    "base-php-cli" \
+    "compile-php-beast" \
+    "compile-php-phar" \
+    "dependence-php-composer" \
+    "document-php-apigen" \
+    "document-php-phpdox" \
+    "unittest-php-phpunit" \
     )
 
 paths=( \
@@ -23,6 +30,13 @@ paths=( \
     "cd ../phploc" \
     "cd ../phpmd" \
     "cd ../phpmetrics" \
+    "cd ../../Base/cli" \
+    "cd ../../Compile/beast" \
+    "cd ../phar" \
+    "cd ../../Dependence/component-composer" \
+    "cd ../../Document/apigen" \
+    "cd ../phpdox" \
+    "cd ../../Unittest/phpunit" \
 )
 
 for i in {0..4}; do

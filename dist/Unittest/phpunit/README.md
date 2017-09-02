@@ -3,7 +3,7 @@
 ## Build
 
 ```shell
-docker build -t hub.opshub.sh/binary/v1/containerops/component/binary/php/phpunit:0.1 .
+docker build -t hub.opshub.sh/containerops/unittest-php-phpunit:latest .
 ```
 
 ## Run

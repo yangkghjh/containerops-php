@@ -3,7 +3,7 @@
 ## Build
 
 ```shell
-docker build -t hub.opshub.sh/binary/v1/containerops/component/binary/php/cli:0.1 .
+docker build -t hub.opshub.sh/containerops/base-php-cli:latest .
 ```
 
 ## Run

@@ -3,7 +3,7 @@
 ## Build
 
 ```shell
-docker build -t hub.opshub.sh/binary/v1/containerops/component/binary/php/apigen:0.1 .
+docker build -t hub.opshub.sh/containerops/document-php-apigen:latest .
 ```
 
 ## Run
