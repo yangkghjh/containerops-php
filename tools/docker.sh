@@ -5,7 +5,8 @@ source tools/config.sh
 echo "Start building..."
 
 cd base
-docker build -t hub.opshub.sh/binary/v1/containerops/component/binary/php:0.1 --build-arg php_version=7.1.4 .
+docker build -t ${PREFIX}php:$VERSION --build-arg php_version=7.1.4 .
+docker push ${PREFIX}php:$VERSION
 cd ..
 
 list=( \
@@ -24,7 +25,7 @@ paths=( \
     "cd ../phpmetrics" \
 )
 
-for i in {0..1}; do
+for i in {0..4}; do
     ${paths[$i]}
     echo "Build $PREFIX${list[$i]}:$VERSION"
     docker build -t $PREFIX${list[$i]}:$VERSION .
