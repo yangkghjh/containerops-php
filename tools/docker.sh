@@ -39,7 +39,7 @@ paths=( \
     "cd ../../Unittest/phpunit" \
 )
 
-for i in {0..4}; do
+for i in {0..11}; do
     ${paths[$i]}
     echo "Build $PREFIX${list[$i]}:$VERSION"
     docker build -t $PREFIX${list[$i]}:$VERSION .
