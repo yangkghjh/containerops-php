@@ -53,7 +53,7 @@ cd containerops-php
 
 ```
 cd base
-docker build -t hub.opshub.sh/binary/v1/containerops/component/binary/php:0.1 --build-arg php_version=7.1.4 .
+docker build -t hub.opshub.sh/containerops/php:latest --build-arg php_version=7.1.4 .
 ```
 
 ### Environment
@@ -67,33 +67,33 @@ docker exec -ti test-env bash
 ### Test
 
 ```shell
-docker run --env CO_DATA="git-url=https://github.com/sebastianbergmann/phploc.git entry-file=build.php" hub.opshub.sh/binary/v1/containerops/component/binary/php/component-composer:0.1
-docker run --env CO_DATA="git-url=https://github.com/TIGERB/easy-php.git" hub.opshub.sh/binary/v1/containerops/component/binary/php/phpcpd:0.1
-docker run --env CO_DATA="git-url=https://github.com/squizlabs/PHP_CodeSniffer.git report=full standard=phpcs.xml.dist" hub.opshub.sh/binary/v1/containerops/component/binary/php/phpcs:0.1
-docker run --env CO_DATA="git-url=https://github.com/TIGERB/easy-php.git exclude=public" hub.opshub.sh/binary/v1/containerops/component/binary/php/phploc:0.1
-docker run --env CO_DATA="git-url=https://github.com/TIGERB/easy-php.git" hub.opshub.sh/binary/v1/containerops/component/binary/php/phpmd:0.1
-docker run --env CO_DATA="git-url=https://github.com/TIGERB/easy-php.git" hub.opshub.sh/binary/v1/containerops/component/binary/php/phpmetrics:0.1
-docker run --env CO_DATA="git-url=https://github.com/SegmentFault/phar-sample.git entry-file=build.php" hub.opshub.sh/binary/v1/containerops/component/binary/php/phar:0.1
-docker run --env CO_DATA="git-url=https://github.com/sebastianbergmann/phploc.git --configuration=phpunit.xml composer=true" hub.opshub.sh/binary/v1/containerops/component/binary/php/phpunit:0.1
-docker run --env CO_DATA="git-url=https://github.com/wp-cli/wp-cli.git file=./bin/wp composer=true" hub.opshub.sh/binary/v1/containerops/component/binary/php/cli:0.1
-docker run --env CO_DATA="git-url=https://github.com/TIGERB/easy-php.git" hub.opshub.sh/binary/v1/containerops/component/binary/php/beast:0.1
-docker run --env CO_DATA="git-url=https://github.com/TIGERB/easy-php.git path=app destination=docs" hub.opshub.sh/binary/v1/containerops/component/binary/php/apigen:0.1
-docker run --env CO_DATA="git-url=https://github.com/theseer/phpdox.git" hub.opshub.sh/binary/v1/containerops/component/binary/php/phpdox:0.1
+docker run --env CO_DATA="git-url=https://github.com/sebastianbergmann/phploc.git entry-file=build.php" hub.opshub.sh/containerops/analysis-php-phpcpd:latest
+docker run --env CO_DATA="git-url=https://github.com/TIGERB/easy-php.git" hub.opshub.sh/containerops/analysis-php-phpcs:latest
+docker run --env CO_DATA="git-url=https://github.com/squizlabs/PHP_CodeSniffer.git report=full standard=phpcs.xml.dist" hub.opshub.sh/containerops/analysis-php-phploc:latest
+docker run --env CO_DATA="git-url=https://github.com/TIGERB/easy-php.git exclude=public" hub.opshub.sh/containerops/analysis-php-phpmd:latest
+docker run --env CO_DATA="git-url=https://github.com/TIGERB/easy-php.git" hub.opshub.sh/containerops/analysis-php-phpmetrics:latest
+docker run --env CO_DATA="git-url=https://github.com/TIGERB/easy-php.git" hub.opshub.sh/containerops/base-php-cli:latest
+docker run --env CO_DATA="git-url=https://github.com/SegmentFault/phar-sample.git entry-file=build.php" hub.opshub.sh/containerops/compile-php-beast:latest
+docker run --env CO_DATA="git-url=https://github.com/sebastianbergmann/phploc.git --configuration=phpunit.xml composer=true" hub.opshub.sh/containerops/compile-php-phar:latest
+docker run --env CO_DATA="git-url=https://github.com/wp-cli/wp-cli.git file=./bin/wp composer=true" hub.opshub.sh/containerops/dependence-php-composer:latest
+docker run --env CO_DATA="git-url=https://github.com/TIGERB/easy-php.git" hub.opshub.sh/containerops/document-php-apigen:latest
+docker run --env CO_DATA="git-url=https://github.com/TIGERB/easy-php.git path=app destination=docs" hub.opshub.sh/containerops/document-php-phpdox:latest
+docker run --env CO_DATA="git-url=https://github.com/theseer/phpdox.git" hub.opshub.sh/containerops/unittest-php-phpunit:latest
 ```
 
 ### Build Images
 
 ```shell
-docker build -t hub.opshub.sh/binary/v1/containerops/component/binary/php/phpcpd:0.1 .
-docker build -t hub.opshub.sh/binary/v1/containerops/component/binary/php/phpcs:0.1 .
-docker build -t hub.opshub.sh/binary/v1/containerops/component/binary/php/phploc:0.1 .
-docker build -t hub.opshub.sh/binary/v1/containerops/component/binary/php/phpmd:0.1 .
-docker build -t hub.opshub.sh/binary/v1/containerops/component/binary/php/phpmetrics:0.1 .
-docker build -t hub.opshub.sh/binary/v1/containerops/component/binary/php/phar:0.1 .
-docker build -t hub.opshub.sh/binary/v1/containerops/component/binary/php/phpunit:0.1 .
-docker build -t hub.opshub.sh/binary/v1/containerops/component/binary/php/cli:0.1 .
-docker build -t hub.opshub.sh/binary/v1/containerops/component/binary/php/component-composer: .
-docker build -t hub.opshub.sh/binary/v1/containerops/component/binary/php/beast:0.1 .
-docker build -t hub.opshub.sh/binary/v1/containerops/component/binary/php/apigen:0.1 .
-docker build -t hub.opshub.sh/binary/v1/containerops/component/binary/php/phpdox:0.1 .
+docker build -t hub.opshub.sh/containerops/analysis-php-phpcpd:latest .
+docker build -t hub.opshub.sh/containerops/analysis-php-phpcs:latest .
+docker build -t hub.opshub.sh/containerops/analysis-php-phploc:latest .
+docker build -t hub.opshub.sh/containerops/analysis-php-phpmd:latest .
+docker build -t hub.opshub.sh/containerops/analysis-php-phpmetrics:latest .
+docker build -t hub.opshub.sh/containerops/base-php-cli:latest .
+docker build -t hub.opshub.sh/containerops/compile-php-beast:latest .
+docker build -t hub.opshub.sh/containerops/compile-php-phar:latest .
+docker build -t hub.opshub.sh/containerops/dependence-php-composer:latest .
+docker build -t hub.opshub.sh/containerops/document-php-apigen:latest .
+docker build -t hub.opshub.sh/containerops/document-php-phpdox:latest .
+docker build -t hub.opshub.sh/containerops/unittest-php-phpunit:latest .
 ```
