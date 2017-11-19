@@ -45,7 +45,7 @@ stages:
               memory: 4G
             timeout: 0
             environments:
-              - CO_DATA: "git-url=https://github.com/sebastianbergmann/phploc.git --configuration=phpunit1.xml composer=true"
+              - CO_DATA: "git-url=https://github.com/yangkghjh/containerops-php.git --configuration=phpunit1.xml composer=true"
   -
     type: end
     name: end
